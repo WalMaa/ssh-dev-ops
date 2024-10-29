@@ -55,7 +55,7 @@ class TestSpreadSheet(TestCase):
         spreadsheet.set("B2", "42.5")
         self.assertEqual("#Error", spreadsheet.evaluate("A1"))
 
-    def test_test_circular_reference(self):
+    def test_circular_reference(self):
         spreadsheet = SpreadSheet()
         spreadsheet.set("A1", "=B2")
         spreadsheet.set("B2", "=A1")

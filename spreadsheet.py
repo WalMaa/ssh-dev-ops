@@ -25,7 +25,7 @@ class SpreadSheet:
                 ref_cell = value[1:]
                 if ref_cell in self._cells:
 
-                    if cell == self.get(value[:1] + value[2:]):
+                    if f"={cell}" == self.get(ref_cell):
                         return "#Circular"
 
                     return self.evaluate(ref_cell)
