@@ -1,4 +1,6 @@
 
+
+
 class SpreadSheet:
 
     def __init__(self):
@@ -22,6 +24,10 @@ class SpreadSheet:
             except ValueError:
                 ref_cell = value[1:]
                 if ref_cell in self._cells:
+
+                    if cell == self.get(value[:1] + value[2:]):
+                        return "#Circular"
+
                     return self.evaluate(ref_cell)
                 else:
                     return "#Error"
