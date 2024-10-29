@@ -12,6 +12,8 @@ class SpreadSheet:
 
     def evaluate(self, cell: str):
         value = self._cells.get(cell, '')
+        if value.startswith("'"):
+            return "#Error"
         try:
             return int(value)
         except ValueError:
