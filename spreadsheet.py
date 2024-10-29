@@ -17,7 +17,14 @@ class SpreadSheet:
         elif value.startswith("'"):
             return "#Error"
         elif value.startswith("="):
-            return value[1:]
+            try:
+                return int(value[1:])
+            except ValueError:
+                ref_cell = value[1:]
+                if ref_cell in self._cells:
+                    return self.evaluate(ref_cell)
+                else:
+                    return "#Error"
         try:
             return int(value)
         except ValueError:
