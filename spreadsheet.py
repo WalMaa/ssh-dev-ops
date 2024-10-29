@@ -10,6 +10,14 @@ class SpreadSheet:
     def get(self, cell: str) -> str:
         return self._cells.get(cell, '')
 
-    def evaluate(self, cell: str) -> int:
-        return int(self._cells[cell])
+    def evaluate(self, cell: str):
+        value = self._cells.get(cell, '')
+        try:
+            return int(value)
+        except ValueError:
+            try:
+                float(value)
+                return "#Error"
+            except ValueError:
+                return value
 
