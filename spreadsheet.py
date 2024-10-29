@@ -11,9 +11,13 @@ class SpreadSheet:
         return self._cells.get(cell, '')
 
     def evaluate(self, cell: str):
-        value = self._cells.get(cell, '')
-        if value.startswith("'"):
+        value = self.get(cell)
+        if value.startswith("='") and value.endswith("'"):
+            return value[2:-1]
+        elif value.startswith("'"):
             return "#Error"
+        elif value.startswith("="):
+            return value[1:]
         try:
             return int(value)
         except ValueError:
